@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour {
     
     // TODO: find a way to stop the buggy looking movement when moving directly into walls. What causes this?
 
-    public float moveSpeed = 5f;
-    private Vector3 movement;
+    public float moveSpeed = 7.25f;
+    private Vector3 dir;
     
     // Start is called before the first frame update
     void Start() {
@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour {
         
         // Input
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        dir.x = Input.GetAxisRaw("Horizontal");
+        dir.y = Input.GetAxisRaw("Vertical");
         
-        transform.position += (movement.normalized * moveSpeed * Time.deltaTime);
+        transform.position += (dir.normalized * moveSpeed * Time.deltaTime);
     }
 
 }

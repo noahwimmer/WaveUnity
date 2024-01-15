@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 
         if (score % 90 == 0) {
             round++;
-            score++;
+            score++; // This line is to prevent the score from increasing multiple times if the time between frames is < .25f ^^
         }
         
         UpdateHUD();
