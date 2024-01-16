@@ -9,18 +9,27 @@ public class GameManager : MonoBehaviour {
     private int round = 1;
     private float delta = 0;
 
+    private float maxHealth = 100f;
+    private float playerHealth;
+
+    public Image healthUI;
+    
     public Text roundText;
     public Text scoreText;
+
+    public void TakeDamage(float damage) {
+        playerHealth -= damage;
+    }
     
     void UpdateHUD() {
         roundText.text = "Round: " + round;
         scoreText.text = "Score: " + score;
+        healthUI.fillAmount = playerHealth / maxHealth;
     }
     
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        playerHealth = maxHealth;
     }
 
     // Update is called once per frame
