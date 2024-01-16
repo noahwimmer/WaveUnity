@@ -5,25 +5,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     
-    // TODO: find a way to stop the buggy looking movement when moving directly into walls. What causes this?
-
     public float moveSpeed = 7.25f;
     private Vector3 dir;
+    private Rigidbody2D rb;
     
-    // Start is called before the first frame update
     void Start() {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
     
-    // Update is called once per frame
     void Update() {
-        
-        // Input
-
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
-        
-        transform.position += (dir.normalized * moveSpeed * Time.deltaTime);
     }
 
+    private void FixedUpdate() {
+        rb.velocity = dir.normalized * moveSpeed;
+    }
 }

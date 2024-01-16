@@ -6,10 +6,8 @@ public class BasicEnemyMovement : MonoBehaviour {
     
     public float impulseForce = 3f;
     private Vector2 dir;
-
     private Rigidbody2D rb;
     
-    // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         
@@ -26,9 +24,8 @@ public class BasicEnemyMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    {
+    void Update() {
+    
         
     }
 }
