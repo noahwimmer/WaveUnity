@@ -17,15 +17,11 @@ public class BasicEnemyMovement : MonoBehaviour {
     }
     
     void OnCollisionEnter2D(Collision2D collision) {
-        print("on collision enter");
-        // Invert the velocity component when colliding with a wall
-        Vector2 normal = collision.GetContact(0).normal;
-        rb.AddForce(normal * impulseForce, ForceMode2D.Impulse);
+        // For hit detection for player
     }
 
     // Update is called once per frame
     void Update() {
-    
         
     }
 }
