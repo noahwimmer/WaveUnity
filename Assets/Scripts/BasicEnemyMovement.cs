@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicEnemyMovement : MonoBehaviour {
     
-    public float moveSpeed = 3f;
+    public float impulseForce = 3f;
     private Vector2 dir;
 
     private Rigidbody2D rb;
@@ -12,28 +12,22 @@ public class BasicEnemyMovement : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-
-        Vector2 screenBounds =
-            Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(-screenBounds.y, screenBounds.y));
         
         // Set the enemy's initial movement direction to a random direction
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        rb.velocity = randomDirection * moveSpeed;
-        
+        rb.AddForce(randomDirection * impulseForce, ForceMode2D.Impulse);
     }
     
     void OnCollisionEnter2D(Collision2D collision) {
+        print("on collision enter");
         // Invert the velocity component when colliding with a wall
         Vector2 normal = collision.GetContact(0).normal;
-        rb.velocity = new Vector2(
-            normal.x != 0 ? -rb.velocity.x : rb.velocity.x,
-            normal.y != 0 ? -rb.velocity.y : rb.velocity.y
-        );
+        rb.AddForce(normal * impulseForce, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
     void Update()
+    {
     {
         
     }
