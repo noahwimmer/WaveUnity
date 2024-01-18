@@ -7,6 +7,13 @@ public class BasicEnemyMovement : MonoBehaviour {
     public float impulseForce = 3f;
     private Vector2 dir;
     private Rigidbody2D rb;
+
+    [SerializeField]
+    private float DPS = 10f;
+
+    public float getDPS() {
+        return DPS;
+    }
     
     void Start() {
         rb = GetComponent<Rigidbody2D>();
