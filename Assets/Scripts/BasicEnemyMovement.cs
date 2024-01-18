@@ -15,10 +15,6 @@ public class BasicEnemyMovement : MonoBehaviour {
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         rb.AddForce(randomDirection * impulseForce, ForceMode2D.Impulse);
     }
-    
-    void OnCollisionEnter2D(Collision2D collision) {
-        // For hit detection for player
-    }
 
     // Update is called once per frame
     void Update() {
