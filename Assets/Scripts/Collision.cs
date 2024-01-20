@@ -15,6 +15,10 @@ public class Collision : MonoBehaviour {
         if (other.gameObject.CompareTag("BasicEnemy")) {
             // Player is within the bounds of the enemy
             gm.TakeDamage(other.gameObject.GetComponent<BasicEnemyMovement>().getDPS() * Time.deltaTime);
+        } else if (other.gameObject.CompareTag("SmartEnemy")) {
+            gm.TakeDamage(other.gameObject.GetComponent<SmartEnemyMovement>().getDPS() * Time.deltaTime);
+        } else if (other.gameObject.CompareTag("FastEnemy")) {
+            gm.TakeDamage(other.gameObject.GetComponent<FastEnemyMovement>().getDPS() * Time.deltaTime);
         }
     }
 
